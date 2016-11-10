@@ -1,5 +1,7 @@
 import maya.cmds as cmds
 
+import maya.mel as mel
+
 version = mel.eval("getApplicationVersionAsFloat")
 if version >= 2016:
     mmHotkeySet = "mmHotkeySet"
@@ -140,9 +142,9 @@ def createShape(myColor, shape, selection):
     cmds.parent(ctrl, ctrlGrp)
     if (selection != "Transform"):
         ctrlGrp = setToZero(ctrlGrp, selection)
-        ctrl = freezeFlatControl(ctrl, ctrlGrp, .5)
+        ctrl = freezeFlatControl(ctrl, ctrlGrp, 10)
     else:
-        ctrl = freezeFlatControl(ctrl, ctrlGrp, 6)
+        ctrl = freezeFlatControl(ctrl, ctrlGrp, 30)
     cmds.makeIdentity(ctrl, apply=True, t=True, r=True, s=True, n=0, pn=1)
     return ctrlGrp
 
